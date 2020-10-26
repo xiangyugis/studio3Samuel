@@ -73,11 +73,22 @@ p {
 }
   #mapId {
     position: absolute;
-    top: 200px;
+    top: 130px;
     bottom: 0;
     width: 100%;
   }
-
+  #nav{
+    height: 130px;
+    width: 100%;
+  }
+  #mapTitle{
+    float: left;
+    flex-basis: 40%;
+  }
+  #button{
+    padding-top: 60px;
+    padding-left: 40%;
+  }
   </style>
   <!-- Adding styling info for page layout by reading in a CSS file -->
   <link rel="stylesheet" href="styles.css">
@@ -85,14 +96,21 @@ p {
 </head>
 
 <body>
-  <h1>Studio Week 3 <br> Choropleth Map with Mapbox </h1>
+  <div id= "nav">
+  <div id="mapTitle"><p><h1> Studio Week 3<br></h1> <h2>Choropleth Map with Mapbox </h2></p></div>
   <!-- Add multiple pages to web page-->
   <!-- active class displays the grey box around current page-->
+<div id="button">
   <ul>
   	<li><a class="active" href="index.html" target="_self">Output 1</a></li>
     <li><a href="mapbox-interaction.html" target="_self">Output 2</a></li>
     <li><a href="mapbox-turfjs.html" target="_self">Output 3</a></li>
   </ul>
+  </div>
+  <div id= "space">
+
+  </div>
+  </div>
   <br>
   <!-- Add a div to give the map somewhere to go -->
 <div id="mapId"></div>
