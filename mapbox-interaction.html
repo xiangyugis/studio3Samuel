@@ -90,7 +90,11 @@ type="text/css"
     .addTo(map);
     var popup = new mapboxgl.Popup({ closeOnClick: false })
     .setLngLat([-71.8023, 42.2626])
-    .setHTML('<h1>Hah! I know you will be here!</h1>')
+    .setHTML('<h1>Hah! I knew you will be here!</h1>')
+    .addTo(map);
+    var popup = new mapboxgl.Popup({ closeOnClick: false })
+    .setLngLat([-2.2216, 52.1936])
+    .setHTML('<h1>This is Worcester England! You have flied way to far!</h1>')
     .addTo(map);
     // Add pan and zoom controls: https://docs.mapbox.com/mapbox-gl-js/api/#map#addcontrol
     // Add a function that flies to a location: https://docs.mapbox.com/mapbox-gl-js/api/#map#flyto
