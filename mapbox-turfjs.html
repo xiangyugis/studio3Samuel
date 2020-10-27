@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <head>
   <title>Studio Week 3</title>
   <!-- Add Mapbox GL JS JavaScript file -->
@@ -8,12 +8,30 @@
   <!-- Add in the Mapbox GL JS CSS file -->
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+<link
+rel="stylesheet"
+href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
+type="text/css"
+/>
+<!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
   <!-- Add CSS styling info for the map -->
   <style type="text/css">
     body {
       margin: 0;
       padding: 0;
+      background-color: #E4F2FB;
     }
+    h2,h3 {
+    padding-left: 1.5em;
+    font-size: 1.2em;
+    font-weight: lighter;
+  }
+  h1{
+    padding-left: 1em;
+  }
     #nav{
       height: 130px;
       width: 100%;
@@ -32,6 +50,29 @@
       bottom: 0;
       width: 100%;
     }
+    .map-overlay {
+      overflow: auto;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.8);
+      margin-right: 20px;
+      font-family: Arial, sans-serif;
+      border-radius: 3px;
+    }
+
+    #features {
+      top: 0;
+      height: 110px;
+      margin-top: 10px;
+      width: 250px;
+    }
+    #population{
+        padding-left: 0.5em;
+    }
+    p {
+      padding-left: 0.7em;
+    }
 
   </style>
   <!-- Adding styling info for page layout by reading in a CSS file -->
@@ -46,9 +87,9 @@
   <!-- active class displays the grey box around current page-->
   <div id="button">
   <ul>
-    <li><a href="index.html" target="_self">Output 1</a></li>
-    <li><a href="mapbox-interaction.html" target="_self">Output 2</a></li>
-    <li><a class="active" href="mapbox-turfjs.html" target="_self">Output 3</a></li>
+    <li id="index"><a href="index.html" target="_self">Output 1</a></li>
+    <li id="inter"><a href="mapbox-interaction.html" target="_self">Output 2</a></li>
+    <li id="turf"><a class="activeT" href="mapbox-turfjs.html" target="_self">Output 3</a></li>
   </ul>
   </div>
   <div id= "space">
@@ -59,6 +100,7 @@
 
   <!-- Add a div to give the map somewhere to go -->
   <div id='map'></div>
+    <div class='map-overlay' id='features'><h2 id='population'>Hospital Locator</h2><div id='pd'><p>Click on each library to find out the nearest hospital!</p></div></div>
 
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoieGlhbmd5dWdpcyIsImEiOiJja2ZlaHV0c2QwNTNlMnRuYjRjbTYxeXFtIn0.cGUreWEZThxryiB2ppiCgw';
@@ -181,7 +223,12 @@ map.on('click', function(e) {
     }, 'hospitals');
   }
 });
-
+    map.addControl(
+    new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl
+    })
+    );
 </script>
 </body>
 
