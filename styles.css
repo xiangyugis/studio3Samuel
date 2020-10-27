@@ -3,17 +3,18 @@ ul {
  margin: 1px;
  padding: 1px;
  overflow: hidden;
- background-color: white;
+ background-color:rgba(255, 255, 255, 0);
+ ;
 }
 
 li {
  float: left;
- border-right: 2px solid white;
+ border: 2px;
+ border-color: #AAABAD;
 }
 
 /* Add a border to all( but not the last) list items */
 li:last-child {
- border-right: none;
 }
 
 li a {
@@ -25,10 +26,22 @@ li a {
 }
 
 /* Links will change color when hovered over */
-li a:hover {
- background-color: #a09f9f;
+#index a:hover {
+ background-color: #F7E8B1;
+}
+#inter a:hover {
+ background-color: #B1FF75;
+}
+#turf a:hover {
+ background-color: #CCCCCC;
 }
 
 .active {
- background-color: #a09f9f;
+ background-color: #F7E8B1;
+}
+.activeI {
+ background-color: #B1FF75;
+}
+.activeT {
+ background-color: #CCCCCC;
 }
